@@ -14,7 +14,7 @@ hx.tare()
 # Place a known weight (10 lbs) on the load cell and get raw data
 
 
-reference_unit = -5.4180849750436515
+reference_unit = -176.1120929038532
 # Set the reference unit
 hx.set_reference_unit(reference_unit)
 
