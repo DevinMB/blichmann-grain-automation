@@ -13,7 +13,7 @@ hx = HX711(DT_PIN, SCK_PIN)
 hx.tare()
 
 # Place a known weight (10 lbs = 4535.92 grams) on the load cell and get raw data
-reference_unit = 423.82518210197713  # Your previously calculated reference unit
+reference_unit = 21.926201667283962  # Your previously calculated reference unit
 hx.set_reference_unit(reference_unit)
 
 # Reset the HX711
