@@ -39,7 +39,7 @@ try:
         hx.power_down()
         time.sleep(0.1)  # Ensure the sensor has time to power down
         hx.power_up()
-        time.sleep(1)  # Delay between readings to allow the sensor to stabilize
+        time.sleep(.7)  # Delay between readings to allow the sensor to stabilize
 except (KeyboardInterrupt, SystemExit):
     # Cleanup GPIO on exit
     GPIO.cleanup()
