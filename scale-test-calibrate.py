@@ -13,7 +13,7 @@ hx.tare()
 
 # Calibration process
 # Place a known weight (e.g., 10 lbs = 4535.92 grams) on the load cell
-known_weight = 4535.92  # Known weight in grams
+known_weight = 41168  # Known weight in grams
 
 # Read raw data from the HX711
 raw_data = hx.get_weight(5)
