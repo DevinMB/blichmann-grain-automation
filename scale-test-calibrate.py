@@ -12,6 +12,9 @@ hx = HX711(DT_PIN, SCK_PIN)
 # Tare to zero
 hx.tare()
 
+print("Place 10lbs on scale...")
+time.sleep(60)
+
 # Calibration process
 # Place a known weight (e.g., 10 lbs = 4535.92 grams) on the load cell
 known_weight = 4535.92  # Known weight in grams
@@ -23,7 +26,7 @@ readings = []
 print("Starting calibration. Please wait...")
 
 for _ in range(num_readings):
-    raw_data = hx.get_weight(1)  # Take one reading at a time
+    raw_data = hx.get_weight(5)  # Take one reading at a time
     if raw_data is not None:
         readings.append(raw_data)
     time.sleep(0.1)  # Short delay between readings to stabilize
