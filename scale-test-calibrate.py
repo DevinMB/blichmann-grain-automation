@@ -16,7 +16,7 @@ hx.tare()
 known_weight = 4535.92  # Known weight in grams
 
 # Read raw data from the HX711
-raw_data = hx.get_raw_data_mean()
+raw_data = hx.get_weight(5)
 
 if raw_data:
     print(f'Raw data: {raw_data}')
@@ -48,4 +48,3 @@ except (KeyboardInterrupt, SystemExit):
     # Cleanup GPIO on exit
     GPIO.cleanup()
     print("Exiting gracefully...")
-
