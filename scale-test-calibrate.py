@@ -16,8 +16,8 @@ print("Place 10lbs on scale...")
 time.sleep(60)
 
 # Calibration process
-# Place a known weight (e.g., 10 lbs = 4535.92 grams) on the load cell
-known_weight = 4535.92  # Known weight in grams
+# Place a known weight (e.g., 10 lbs) on the load cell
+known_weight_lbs = 10.0  # Known weight in pounds
 
 # Read raw data from the HX711 multiple times
 num_readings = 100
@@ -36,7 +36,7 @@ if readings:
     average_raw_data = sum(readings) / len(readings)
     print(f'Average raw data: {average_raw_data}')
     # Calculate reference unit
-    reference_unit = average_raw_data / known_weight
+    reference_unit = average_raw_data / known_weight_lbs
     print(f'Reference unit: {reference_unit}')
 else:
     print('Failed to read raw data. Please check the sensor.')
