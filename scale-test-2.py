@@ -25,7 +25,7 @@ hx.tare()
 def get_stable_weight(num_readings=10):
     weights = []
     for _ in range(num_readings):
-        weight = hx.get_weight(5)
+        weight = hx.get_weight(2)
         weights.append(weight)
         time.sleep(0.1)  # Short delay between readings to stabilize
     return sum(weights) / len(weights)
@@ -33,7 +33,7 @@ def get_stable_weight(num_readings=10):
 try:
     while True:
         # Read data from the HX711
-        val = get_stable_weight(5)  # Get the average of 10 readings
+        val = get_stable_weight(2)  # Get the average of 10 readings
         print(f'Weight: {val:.2f} g')
         
         hx.power_down()
