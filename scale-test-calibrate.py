@@ -13,7 +13,7 @@ hx.tare()
 
 # Calibration process
 # Place a known weight (e.g., 10 lbs = 4535.92 grams) on the load cell
-known_weight = 41168  # Known weight in grams
+known_weight = 4535.92  # Known weight in grams
 
 # Read raw data from the HX711
 raw_data = hx.get_weight(5)
@@ -26,25 +26,5 @@ if raw_data:
 else:
     print('Failed to read raw data. Please check the sensor.')
 
-# Set the reference unit
-hx.set_reference_unit(reference_unit)
+GPIO.cleanup()
 
-# Reset the HX711
-hx.reset()
-
-# Tare to zero again after setting reference unit
-hx.tare()
-
-print("Calibration complete. Reading weight...")
-
-try:
-    while True:
-        # Read data from the HX711
-        val = hx.get_weight(5)
-        print(f'Weight: {val} g')
-        hx.power_down()
-        hx.power_up()
-except (KeyboardInterrupt, SystemExit):
-    # Cleanup GPIO on exit
-    GPIO.cleanup()
-    print("Exiting gracefully...")
