@@ -33,7 +33,7 @@ def get_average_weight(num_readings=10):
 try:
     while True:
         # Read data from the HX711
-        val = get_average_weight(10)  # Get the average of 10 readings
+        val = get_average_weight(50)  # Get the average of 10 readings
         print(f'Weight: {val:.2f} g')
         hx.power_down()
         hx.power_up()
