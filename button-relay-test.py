@@ -7,14 +7,13 @@ import time
 
 
 # Define the GPIO pins
-RELAY_PIN = 17  # GPIO pin for the relay
-BUTTON_PIN = 26  # GPIO pin for the button
+RELAY_PIN = 17  
+BUTTON_PIN = 26 
 OVERRIDE_PIN = 24
-LED_PIN = board.D18  # GPIO pin for the LED data input (using board.D18 for GPIO 18)
-
+LED_PIN1 = board.D15 
+LED_PIN2 = board.D18  
 # Number of LEDs
 NUM_LEDS = 1
-ORDER = neopixel.RGB
 
 # Set up the relay and button using gpiozero
 relay = LED(RELAY_PIN)
@@ -22,9 +21,8 @@ button = Button(BUTTON_PIN)
 override_switch = Button(OVERRIDE_PIN)
 
 # Set up the NeoPixel LED
-# pixels = neopixel.NeoPixel(LED_PIN, NUM_LEDS)
-pixels = neopixel.NeoPixel(
-    pin=LED_PIN, n=NUM_LEDS, brightness=0.2, auto_write=True
+button_1_pixel = neopixel.NeoPixel(
+    pin=LED_PIN1, n=NUM_LEDS, brightness=0.2, auto_write=True
 )
 
 def turn_off_relay(option=None):
