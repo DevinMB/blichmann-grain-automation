@@ -5,7 +5,7 @@ import time
 
 # Define the GPIO pins
 RELAY_PIN = 17  # GPIO pin for the relay
-BUTTON_PIN = 23  # GPIO pin for the button
+BUTTON_PIN = 26  # GPIO pin for the button
 OVERRIDE_PIN = 24
 LED_PIN = board.D18  # GPIO pin for the LED data input (using board.D18 for GPIO 18)
 
