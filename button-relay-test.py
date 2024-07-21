@@ -27,7 +27,7 @@ button_1_pixel = neopixel.NeoPixel(
 
 def turn_off_relay(option=None):
         relay.off()
-        pixels[0] = (255, 0, 0)  # Red
+        button_1_pixel[0] = (255, 0, 0)  # Red
         print("Relay is OFF. LED is Red.")
 
 def turn_on_relay(option=None):
@@ -36,7 +36,7 @@ def turn_on_relay(option=None):
         print("Relay Override On")
     else: 
         relay.on()
-        pixels[0] = (0, 255, 0)  # Green
+        button_1_pixel[0] = (0, 255, 0)  # Green
         print("Relay is ON. LED is Green.")
     
 try:
@@ -53,5 +53,5 @@ try:
 except KeyboardInterrupt:
     print("Program terminated by user.")
 finally:
-    pixels[0] = (0, 0, 0)  # Turn off LED
+    button_1_pixel[0] = (0, 0, 0)  # Turn off LED
     print("GPIO cleanup complete.")
