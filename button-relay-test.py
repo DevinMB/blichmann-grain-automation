@@ -3,6 +3,7 @@ import neopixel
 import microcontroller
 from gpiozero import Button, LED
 import time
+GPIO.setmode(GPIO.BCM)
 
 # Define the GPIO pins
 RELAY_PIN = 17  # GPIO pin for the relay
