@@ -18,7 +18,10 @@ button = Button(BUTTON_PIN)
 override_switch = Button(OVERRIDE_PIN)
 
 # Set up the NeoPixel LED
-pixels = neopixel.NeoPixel(LED_PIN, NUM_LEDS)
+# pixels = neopixel.NeoPixel(LED_PIN, NUM_LEDS)
+pixels = neopixel.NeoPixel(
+    pixel_pin=LED_PIN, num_pixels=NUM_LEDS, brightness=0.2, auto_write=True, pixel_order=ORDER
+)
 
 def turn_off_relay(option=None):
         relay.off()
