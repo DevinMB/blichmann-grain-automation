@@ -10,7 +10,7 @@ import time
 RELAY_PIN = 17  
 BUTTON_PIN = 26 
 OVERRIDE_PIN = 24
-LED_PIN1 = board.D15 
+LED_PIN1 = board.D21 
 LED_PIN2 = board.D18  
 # Number of LEDs
 NUM_LEDS = 1
