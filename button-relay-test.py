@@ -1,4 +1,4 @@
-
+import board
 import neopixel
 from gpiozero import Button, LED
 import time
