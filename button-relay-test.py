@@ -11,7 +11,7 @@ GPIO.setmode(GPIO.BCM)
 RELAY_PIN = 17  # GPIO pin for the relay
 BUTTON_PIN = 26  # GPIO pin for the button
 OVERRIDE_PIN = 24
-LED_PIN = board.D18  # GPIO pin for the LED data input (using board.D18 for GPIO 18)
+LED_PIN = 18  # GPIO pin for the LED data input (using board.D18 for GPIO 18)
 
 # Number of LEDs
 NUM_LEDS = 1
