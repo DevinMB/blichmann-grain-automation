@@ -1,8 +1,10 @@
 import board
 import neopixel 
-import microcontroller
+import RPi.GPIO as GPIO
+
 from gpiozero import Button, LED
 import time
+
 GPIO.setmode(GPIO.BCM)
 
 # Define the GPIO pins
