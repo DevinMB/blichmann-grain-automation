@@ -1,4 +1,4 @@
-import adafruit_blinka.board.raspberrypi.rpi_ws281x as board
+import board
 import neopixel 
 import RPi.GPIO as GPIO
 
