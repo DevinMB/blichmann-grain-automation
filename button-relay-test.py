@@ -11,6 +11,7 @@ LED_PIN = 18  # GPIO pin for the LED data input (using board.D18 for GPIO 18)
 
 # Number of LEDs
 NUM_LEDS = 1
+ORDER = neopixel.RGB
 
 # Set up the relay and button using gpiozero
 relay = LED(RELAY_PIN)
