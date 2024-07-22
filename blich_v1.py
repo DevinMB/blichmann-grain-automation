@@ -76,8 +76,6 @@ def calabrate_scale():
     else:
         print('Failed to read raw data. Please check the sensor.')
 
-
-
 is_running = False
 button_combo_count  = 0
 hold_button_1_count = 0
