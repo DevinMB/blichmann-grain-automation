@@ -3,8 +3,8 @@ from hx711 import HX711
 import time
 
 # Define GPIO pins
-SCALE_DT_PIN = 5   
-SCALE_SCK_PIN = 6  
+SCALE_DT_PIN = 6   
+SCALE_SCK_PIN = 5  
 
 # Initialize HX711
 hx = HX711(SCALE_DT_PIN, SCALE_SCK_PIN)
