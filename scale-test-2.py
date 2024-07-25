@@ -27,7 +27,7 @@ hx.tare()
 def get_stable_weight(num_readings=10):
     weights = []
     for _ in range(num_readings):
-        weight = hx.get_weight(2)
+        weight = hx.get_weight(1)
         weights.append(weight)
         time.sleep(0.1)  # Short delay between readings to stabilize
     return sum(weights) / len(weights)
