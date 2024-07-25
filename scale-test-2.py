@@ -24,19 +24,19 @@ hx.reset()
 # Tare to zero again after setting reference unit
 hx.tare()
 
-# def get_stable_weight(num_readings=1):
-#     weights = []
-#     for _ in range(num_readings):
-#         weight = hx.get_weight(1)
-#         weights.append(weight)
-#         time.sleep(0.1)  # Short delay between readings to stabilize
-#     return sum(weights) / len(weights)
+def get_stable_weight(num_readings=1):
+    weights = []
+    for _ in range(num_readings):
+        weight = hx.get_weight(1)
+        weights.append(weight)
+        time.sleep(0.1)  # Short delay between readings to stabilize
+    return sum(weights) / len(weights)
 
 try:
     while True:
         # Read data from the HX711
-        # val = get_stable_weight(1)  # Get the average of 10 readings
-        val = hx.get_weight(1)
+        val = get_stable_weight(1)  # Get the average of 10 readings
+        # val = hx.get_weight(1)
         print(f'Weight: {val:.2f} LBS')
         
         hx.power_down()
