@@ -36,7 +36,7 @@ try:
     while True:
         # Read data from the HX711
         # val = get_stable_weight(1)  # Get the average of 10 readings
-        val = hx.get_weight(2)
+        val = hx.get_weight(1)
         print(f'Weight: {val:.2f} LBS')
         
         # hx.power_down()
