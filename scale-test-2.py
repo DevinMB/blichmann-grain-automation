@@ -24,7 +24,7 @@ hx.reset()
 # Tare to zero again after setting reference unit
 hx.tare()
 
-def get_stable_weight(num_readings=10):
+def get_stable_weight(num_readings=1):
     weights = []
     for _ in range(num_readings):
         weight = hx.get_weight(1)
@@ -39,7 +39,7 @@ try:
         print(f'Weight: {val:.2f} LBS')
         
         hx.power_down()
-        time.sleep(0.2)  # Ensure the sensor has time to power down
+        time.sleep(0.5)  # Ensure the sensor has time to power down
         hx.power_up()
         time.sleep(.7)  # Delay between readings to allow the sensor to stabilize
 except (KeyboardInterrupt, SystemExit):
