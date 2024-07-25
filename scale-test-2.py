@@ -45,7 +45,7 @@ try:
         # Read data from the HX711
         # val = get_stable_weight(1)  # Get the average of 10 readings
         time.sleep(.2) # delay between reads to stabalize
-        hx.get_weight(2)
+        hx.get_weight(1)
         print(f'Weight: {val:.2f} LBS')
         # if(count_loops == 10):
         #     hx.power_down()
