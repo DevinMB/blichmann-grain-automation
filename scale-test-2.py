@@ -35,11 +35,11 @@ def get_stable_weight(num_readings=10):
 try:
     while True:
         # Read data from the HX711
-        val = get_stable_weight(2)  # Get the average of 10 readings
+        val = get_stable_weight(1)  # Get the average of 10 readings
         print(f'Weight: {val:.2f} LBS')
         
         hx.power_down()
-        time.sleep(0.1)  # Ensure the sensor has time to power down
+        time.sleep(0.2)  # Ensure the sensor has time to power down
         hx.power_up()
         time.sleep(.7)  # Delay between readings to allow the sensor to stabilize
 except (KeyboardInterrupt, SystemExit):
