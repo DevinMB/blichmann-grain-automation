@@ -3,8 +3,8 @@ from hx711 import HX711
 import time
 
 # Define GPIO pins
-SCALE_DT_PIN = 5   
-SCALE_SCK_PIN = 6  
+SCALE_DT_PIN = 6   
+SCALE_SCK_PIN = 5  
 
 # Initialize HX711
 hx = HX711(SCALE_DT_PIN, SCALE_SCK_PIN)
@@ -35,7 +35,7 @@ def get_stable_weight(num_readings=10):
 try:
     while True:
         # Read data from the HX711
-        val = get_stable_weight(2)  # Get the average of 10 readings
+        val = get_stable_weight(5)  # Get the average of 10 readings
         print(f'Weight: {val:.2f} LBS')
         
         hx.power_down()
