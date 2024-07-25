@@ -37,13 +37,17 @@ def get_stable_weight(num_readings=10):
 
 # count_loops = 0
 
-time.sleep(1)
+hx.power_down()
+time.sleep(0.5)  # Ensure the sensor has time to power down
+hx.power_up()
+time.sleep(1)  # Delay between readings to allow the sensor to stabilize
+
 print(f"starting reads..")
 
 try:
     while True:
         # Read data from the HX711
-        time.sleep(.2) # delay between reads to stabalize
+        time.sleep(.04) # delay between reads to stabalize
         val = hx.get_weight(1)
         print(f'Weight: {val:.2f} LBS')
         # if(count_loops == 10):
