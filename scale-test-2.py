@@ -9,7 +9,7 @@ SCK_PIN = 5
 # Initialize HX711
 hx = HX711(DT_PIN, SCK_PIN)
 
-time.sleep(1)
+time.sleep(.5)
 print(f"zeroing scale")
 
 # Tare to zero
@@ -34,7 +34,11 @@ print(f"starting reads..")
 try:
     while True:
         time.sleep(.04) # delay between reads to stabalize
-        val = hx.get_weight(1)
+        hx.power_down()
+        time.sleep(0.5)  # Ensure the sensor has time to power down
+        hx.power_up()
+        time.sleep(1)  # Delay between readings to allow the sensor to stabilize
+        val = hx.get_weight(5)
         print(f'Weight: {val:.2f} LBS')
         
 except (KeyboardInterrupt, SystemExit):
