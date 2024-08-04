@@ -10,7 +10,7 @@ hx = HX711(DT_PIN, SCK_PIN)
 hx.tare()
 
 # Place a known weight (10 lbs = 4535.92 grams) on the load cell and get raw data
-reference_unit = 11613.582222222207  # Your previously calculated reference unit
+reference_unit = 57533.55377777766  # Your previously calculated reference unit
 hx.set_reference_unit(reference_unit)
 # For Grams : 21.926201667283962
 # For Pounds: 9944.223777777794
@@ -28,7 +28,7 @@ def get_stable_weight(num_readings=10):
 try:
     while True:
         # Read data from the HX711
-        val = get_stable_weight(2)  # Get the average of 10 readings
+        val = get_stable_weight(5)  # Get the average of 10 readings
         print(f'Weight: {val:.2f} LBS')
         
         hx.power_down()
