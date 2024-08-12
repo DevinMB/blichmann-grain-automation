@@ -23,9 +23,7 @@ def get_stable_weight(num_readings=10):
     for _ in range(num_readings):
         weight = hx.get_weight(1)
         weights.append(weight)
-        time.sleep(0.1)  # Short delay between readings to stabilize
-
-        
+        time.sleep(0.5)  # Short delay between readings to stabilize
     return sum(weights) / len(weights)
 try:
     while True:
