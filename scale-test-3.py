@@ -26,6 +26,12 @@ try:
         # Read data from the HX711
         val = hx.get_weight(5)  # Get the average of 10 readings
         print(f'Weight: {val:.2f} LBS')
+
+        hx.power_down()
+        time.sleep(1)  # Ensure the sensor has time to power down
+        hx.power_up()
+        time.sleep(2)  # Delay between readings to allow the sensor to stabilize
+
         
 except (KeyboardInterrupt, SystemExit):
     # Cleanup GPIO on exit
