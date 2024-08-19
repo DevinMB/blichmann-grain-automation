@@ -122,6 +122,7 @@ try:
             calabrate_scale()
         else: 
             relay.off()
+            print(f"Standing By: Current Weight: {current_weight:.2f} LBS")
 
 except KeyboardInterrupt:
     print("Goodbyeeeeeeeee")
