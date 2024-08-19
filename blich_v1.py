@@ -78,7 +78,8 @@ def calabrate_scale():
     else:
         print('Failed to read raw data. Please check the sensor.')
 
-is_running = False
+current_state = False
+is_job_running = False
 button_combo_count  = 0
 hold_button_1_count = 0
 current_weight = 0
@@ -93,21 +94,21 @@ try:
         if override_switch.is_pressed:
             relay.on()
             print(f"Override ON: Current Weight: {current_weight:.2f} LBS")
-        if button_2.is_pressed and is_running == False:
+        if button_2.is_pressed and is_job_running == False:
             relay.on()
             button_2_pixel[0] = (0, 255, 0)  # Green
             print(f"Starting Job")
-        if button_2.is_pressed and is_running == True: 
+        if button_2.is_pressed and is_job_running == True: 
             relay.off()
             button_2_pixel[0] = (0, 0, 255)  # Blue
             print(f"Job Paused")
-        if is_running == True and current_weight >= target_weight:
+        if is_job_running == True and current_weight >= target_weight:
             relay.off()
             button_2_pixel[0] = (0, 0, 255)  # Blue
             print(f"Job Finished! Target weight met.")
-        if is_running == True and current_weight < target_weight:
+        if is_job_running == True and current_weight < target_weight:
             print(f"Job Running: Current Weight: {current_weight} Lbs Target Weight: {target_weight} Lbs")
-        if button_1.is_pressed and is_running == False:
+        if button_1.is_pressed and is_job_running == False:
             if hold_button_1_count >= HOLD_DURATION:
                 current_weight = target_weight
                 hold_button_1_count = 0
@@ -118,9 +119,9 @@ try:
                 remaining_count = HOLD_DURATION - hold_button_1_count
                 print(f"Requesting weight set in {remaining_count}")
                 button_1_pixel[0] = (255, 255, 0)  # Yellow
-        if button_1.is_pressed and button_2.is_pressed and is_running == False:
+        if button_1.is_pressed and button_2.is_pressed and is_job_running == False:
             calabrate_scale()
-        else: 
+        elif: 
             relay.off()
             print(f"Standing By: Current Weight: {current_weight:.2f} LBS")
 
