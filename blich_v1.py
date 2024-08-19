@@ -92,7 +92,7 @@ try:
         current_weight = get_stable_weight(5)
         if override_switch.is_pressed:
             relay.on()
-            print(f"Override ON: Current Weight: {current_weight} Lbs")
+            print(f"Override ON: Current Weight: {current_weight:.2f} LBS")
         if button_2.is_pressed and is_running == False:
             relay.on()
             button_2_pixel[0] = (0, 255, 0)  # Green
