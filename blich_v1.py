@@ -47,7 +47,7 @@ button_1_pixel = neopixel.NeoPixel(
     pin=LED_PIN_1, n=NUM_LEDS, brightness=0.2, auto_write=True
 )
 button_2_pixel = neopixel.NeoPixel(
-    pin=LED_PIN_1, n=NUM_LEDS, brightness=0.2, auto_write=True
+    pin=LED_PIN_2, n=NUM_LEDS, brightness=0.2, auto_write=True
 )
 
 def get_stable_weight(num_readings=10):
