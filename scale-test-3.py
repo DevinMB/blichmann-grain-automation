@@ -11,7 +11,7 @@ SCK_PIN = 5
 hx = HX711(DT_PIN, SCK_PIN)
 
 # Set reference unit (calibrated previously)
-reference_unit = -752.5262222222248
+reference_unit = 9854.586888888884
 hx.set_reference_unit(reference_unit)
 
 # Tare to zero
