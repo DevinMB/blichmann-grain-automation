@@ -87,50 +87,75 @@ target_weight = 0
 
 button_1_pixel[0] = (255, 255, 0)  # Yellow
 button_2_pixel[0] = (255, 0, 0)  # Red
-
-try: 
-    while True: 
+try:
+    while True:
         current_weight = get_stable_weight(5)
+
+        # Define states based on conditions
         if override_switch.is_pressed:
-            relay.on()
-            print(f"Override ON: Current Weight: {current_weight:.2f} LBS")
-        if button_2.is_pressed and is_job_running == False:
+            state = 'override'
+        elif is_job_running:
+            if current_weight >= target_weight:
+                state = 'job_finished'
+            else:
+                state = 'job_running'
+        else:
+            state = 'standing_by'
+
+        # Match the state
+        match state:
+            case 'override':
+                relay.on()
+                print(f"Override ON: Current Weight: {current_weight:.2f} LBS")
+                # Skip the rest of the loop since override takes priority
+                continue
+            
+            case 'standing_by':
+                print(f"Standing By: Current Weight: {current_weight:.2f} LBS")
+            
+            case 'job_running':
+                print(f"Job Running: Current Weight: {current_weight:.2f} LBS Target Weight: {target_weight:.2f} LBS")
+            
+            case 'job_finished':
+                relay.off()
+                is_job_running = False
+                button_2_pixel[0] = (0, 0, 255)  # Blue
+                print("Job Finished! Target weight met.")
+
+        # Handle button press to start/pause the job
+        if button_2.is_pressed and not is_job_running:
+            is_job_running = True
             relay.on()
             button_2_pixel[0] = (0, 255, 0)  # Green
-            print(f"Starting Job")
-        if button_2.is_pressed and is_job_running == True: 
+            print("Starting Job")
+
+        elif button_2.is_pressed and is_job_running:
+            is_job_running = False
             relay.off()
             button_2_pixel[0] = (0, 0, 255)  # Blue
-            print(f"Job Paused")
-        if is_job_running == True and current_weight >= target_weight:
-            relay.off()
-            button_2_pixel[0] = (0, 0, 255)  # Blue
-            print(f"Job Finished! Target weight met.")
-        if is_job_running == True and current_weight < target_weight:
-            print(f"Job Running: Current Weight: {current_weight} Lbs Target Weight: {target_weight} Lbs")
-        if button_1.is_pressed and is_job_running == False:
+            print("Job Paused")
+
+        # Handle weight setting
+        if button_1.is_pressed and not is_job_running:
             if hold_button_1_count >= HOLD_DURATION:
-                current_weight = target_weight
+                target_weight = current_weight  # Set target weight
                 hold_button_1_count = 0
                 button_1_pixel[0] = (0, 255, 0)  # Green
-                print(f'Target weight set: {target_weight} Lbs')
-            else: 
-                hold_button_1_count = hold_button_1_count + 1
+                print(f'Target weight set: {target_weight:.2f} LBS')
+            else:
+                hold_button_1_count += 1
                 remaining_count = HOLD_DURATION - hold_button_1_count
-                print(f"Requesting weight set in {remaining_count}")
+                print(f"Requesting weight set in {remaining_count} seconds")
                 button_1_pixel[0] = (255, 255, 0)  # Yellow
-        if button_1.is_pressed and button_2.is_pressed and is_job_running == False:
+
+        # Handle scale calibration
+        if button_1.is_pressed and button_2.is_pressed and not is_job_running:
             calabrate_scale()
-        elif: 
-            relay.off()
-            print(f"Standing By: Current Weight: {current_weight:.2f} LBS")
 
 except KeyboardInterrupt:
     print("Goodbyeeeeeeeee")
-finally: 
+finally:
     button_1_pixel[0] = (0, 0, 0)
     button_2_pixel[0] = (0, 0, 0)
     GPIO.cleanup()
     print("GPIO cleanup complete.")
-
-
