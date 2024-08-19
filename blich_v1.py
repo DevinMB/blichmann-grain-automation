@@ -3,20 +3,22 @@ import neopixel
 import RPi.GPIO as GPIO
 from gpiozero import Button, LED
 import time
+from hx711 import HX711
 
 
 # Define the GPIO pins
+SCALE_DT_PIN = 6   
+SCALE_SCK_PIN = 5 
+
 RELAY_PIN = 17  
+
 OVERRIDE_PIN = 24
 
 BUTTON_PIN_1 = 26 
 LED_PIN_1 = board.D21 
 
-BUTTON_PIN_2 = 26 
+BUTTON_PIN_2 = 16
 LED_PIN_2 = board.D18  
-
-SCALE_DT_PIN = 6   
-SCALE_SCK_PIN = 5 
 
 # Set led count in neopixel
 NUM_LEDS = 1
@@ -30,7 +32,7 @@ KNOWN_WEIGHT_LBS = 10
 # Set Up Scale
 hx = HX711(SCALE_DT_PIN, SCALE_SCK_PIN)
 hx.tare()
-reference_unit = 9947.728444444423
+reference_unit = 9854.586888888884
 hx.set_reference_unit(reference_unit)
 
 
@@ -87,7 +89,7 @@ button_2_pixel[0] = (255, 0, 0)  # Red
 
 try: 
     while True: 
-        current_weight = get_stable_weight(2)
+        current_weight = get_stable_weight(5)
         if override_switch.is_pressed:
             relay.on()
             print(f"Override ON: Current Weight: {current_weight} Lbs")
