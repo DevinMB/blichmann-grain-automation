@@ -111,6 +111,9 @@ try:
                 continue
             
             case 'standing_by':
+                if relay.is_lit: 
+                    relay.off()
+                    print("Relay turned off.")
                 print(f"Standing By: Current Weight: {current_weight:.2f} LBS")
             
             case 'job_running':
