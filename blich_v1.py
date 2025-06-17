@@ -162,3 +162,5 @@ finally:
     button_2_pixel[0] = (0, 0, 0)
     GPIO.cleanup()
     print("GPIO cleanup complete.")
+
+# TODO handling sensor malfunction, color representation, discard missreads. 
